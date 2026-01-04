@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>by: cArbonAto</title>
+  <link rel="icon" href="https://i.postimg.cc/KcNyWSR4/orinoco.jpg" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📊 Precios PYMA</h1>
+
+    <!-- BUSCADOR -->
+    <input
+        type="text"
+        id="buscador"
+        placeholder="Buscar producto (ej: camote)"
+        autocomplete="off"
+    >
+
+    <!-- METADATOS -->
+    <div class="meta">
+        <div id="scraper">⏳ Cargando datos...</div>
+        <div id="git"></div>
+    </div>
+
+    <!-- TABLA -->
+    <table id="tabla">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Unidad</th>
+                <th>Mayorista</th>
+                <th>Mínimo</th>
+                <th>Máximo</th>
+                <th>Moda</th>
+                <th>Promedio</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- INFO DEL PROYECTO -->
+    <div class="info-box">
+        <h3>ℹ️ Información del proyecto</h3>
+        <p><strong>Administrador:</strong> cArbonAto</p>
+        <p><strong>Desarrollado por:</strong> cArbonAto</p>
+        <p class="desc">
+            Este proyecto fue desarrollado para uso propio, debido a la falta de
+            una herramienta similar que permita visualizar de forma clara y
+            confiable los precios reales del mercado PYMA.
+        </p>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
