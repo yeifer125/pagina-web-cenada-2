@@ -1,9 +1,0 @@
-Estructura del proyecto
-/home/tu_usuario/
-│
-├── app.py
-├── requirements.txt
-├── templates/
-│   └── index.html
-└── static/
-    └── app.js
