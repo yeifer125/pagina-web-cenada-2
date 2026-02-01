@@ -3,36 +3,52 @@ import requests
 
 app = Flask(__name__)
 
-API_URL = "https://apiparagit-3yxs.onrender.com/precios"
+API_URLS = [
+    "https://apiparagit-3yxs.onrender.com/precios",
+    "https://apiparagit-otra.onrender.com/precios"
+]
 
+TIMEOUT = 10
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
 
+def obtener_datos_api():
+    errores = []
+
+    for url in API_URLS:
+        try:
+            r = requests.get(url, timeout=TIMEOUT)
+            r.raise_for_status()
+            return r.json(), url
+        except Exception as e:
+            errores.append(f"{url} -> {str(e)}")
+
+    raise Exception("Todas las APIs fallaron", errores)
+
+
 @app.route("/api/precios")
 def api_precios():
     try:
-        r = requests.get(API_URL, timeout=15)
-        r.raise_for_status()
-        data = r.json()
+        data, api_usada = obtener_datos_api()
 
-        # Metadatos (primer objeto)
         metadata = data[0] if data else {}
-
-        # Productos reales
         productos = [item for item in data if "producto" in item]
 
         return jsonify({
+            "api_activa": api_usada,
             "metadata": metadata,
             "productos": productos
         })
 
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({
+            "error": "No se pudo conectar a ninguna API",
+            "detalle": str(e)
+        }), 500
 
 
 if __name__ == "__main__":
     app.run()
-
