@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 API_URLS = [
     "https://apiparagit-3yxs.onrender.com/precios",
-    "https://apiparagit-otra.onrender.com/precios"
+    "https://apiparagit.onrender.com/precios"
 ]
 
 TIMEOUT = 10
