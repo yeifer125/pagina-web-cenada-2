@@ -3,7 +3,12 @@ Estructura del proyecto
 │
 ├── app.py
 ├── requirements.txt
+├── activar_hotspot.py
 ├── templates/
 │   └── index.html
 └── static/
     └── app.js
+
+Uso de activar_hotspot.py
+- Ejecuta el script en Windows con permisos de administrador para detectar la interfaz del hotspot y activarlo.
+- Comando sugerido: python activar_hotspot.py
